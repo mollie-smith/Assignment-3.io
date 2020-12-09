@@ -1,0 +1,29 @@
+body{width:90%;
+	background: #323232;
+	margin:auto;
+	padding-bottom: 20px;}
+h1 {font-family: 'Almendra SC';
+	font-size: 55px;
+	text-align: center; 
+	color: white;
+	word-spacing: 2px;}
+h2 {font-family: 'DM Serif Display';
+	font-size: 20px;
+	text-align: left; 
+	color: white;}
+h3 {font-family: 'Baskervville';
+	font-size: 30px;
+	text-align: center; 
+	color: white;}
+input {font-family: 'Lusitana';
+	font-size: 18px;
+	text-align: center; 
+	color: black;
+	word-spacing: 2px;}
+p {font-family: 'Odor Mean Chey';
+	font-size: 18px; 
+	color: white;
+	word-spacing: 2px;}
+.img {background: black; 
+	border: 3px solid white;
+	margin:10px;}
