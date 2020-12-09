@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="cart-design.css">
+<link href='https://fonts.googleapis.com/css?family=Almendra SC' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Baskervville' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=DM Serif Display' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lusitana' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Odor Mean Chey' rel='stylesheet'>
+  <head>
+    <h1><u>The Lord of the Rings Trilogy Store</u></h1>
+    <border><center><img class="img" src="https://i.imgur.com/AANaMuQ.png" width="600px"></center>
+  </head>
+    <body>
+    <h3><i> Click the "add to cart" button to add blu-ray dvd item </i></h3>
+    <h2 id="installment1"> 1. The Lord of the Rings: The Fellowship of the Ring (Extended Edition)</h2>
+    <img class="img" src="https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg" width="250px">
+    <p>Price: $20</p>
+    <input id="dvd1" type="button" value="Add the 1st Epic Film into the Cart!">
+    <h2 id="installment2">2. The Lord of the Rings: The Two Towers (Extended Edition)</h2>
+    <img class="img" src="https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg" width="250px">
+    <p>Price: $25</p>
+    <input id="dvd2" type="button" value="Add the 2nd Epic Film into the Cart!">
+    <h2 id="installment3">3. The Lord of the Rings: The Return of the King (Extended Edition)</h2>
+    <img class="img" src="https://images-na.ssl-images-amazon.com/images/I/71X6YzwV0gL._AC_SY879_.jpg" width="250px">
+    <p>Price: $30</p>
+    <input id="dvd3" type="button" value="Add the 3rd Epic Film into the Cart!">
+    <h2><u>Cart Total:</u></h2>
+    <p id="total amount">0</p>
+    <p>Enter Payment Amount:</p>
+    <input type="number" id="final total">
+    <input type="button" value="Confirm Purchase" id="send">
+
+     <script>
+
+    ///Main page configuration:
+        const c=console.log
+
+        var total=0
+
+////Task 1: When the user moves the mouse pointer on the album name (e.g. “OK Computer”), the details about the album appear (you can take text from Wikipedia/other sources if you are modifying content). The text should go back to the original when the mouse pointer moves away (Hint: use mouseover and mouseout events).
+      //Variable(s):
+       var text1=document.querySelector("#installment1")
+       var text2=document.querySelector("#installment2")
+       var text3=document.querySelector("#installment3")
+
+       //Add Event Listener(s):
+       text1.addEventListener("mouseover", changeTextHoverIn)
+       text1.addEventListener("mouseout", changeTextHoverOut)
+       text2.addEventListener("mouseover", changeTextHoverIn)
+       text2.addEventListener("mouseout", changeTextHoverOut)
+       text3.addEventListener("mouseover", changeTextHoverIn)
+       text3.addEventListener("mouseout", changeTextHoverOut)
+
+       //Function(s):
+       function changeTextHoverIn(){
+          var thisId=this.id
+          if(thisId == "installment1") this.textContent = "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron. (Source: IMDb.)"
+          else if (thisId === "installment2") this.textContent = "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard. (Source: IMDb.)"
+          else if (thisId == "installment3" ) this.textContent = "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring. (Source: IMDb.)"
+        }
+        function changeTextHoverOut(){
+          var thisId=this.id
+          if(thisId == "installment1") this.textContent = "1. The Lord of the Rings: The Fellowship of the Ring (Extended Edition)"
+          else if (thisId === "installment2") this.textContent = "2. The Lord of the Rings: The Two Towers (Extended Edition)"
+          else if (thisId == "installment3" ) this.textContent = "3. The Lord of the Rings: The Return of the King (Extended Edition)"
+        }
+
+////Task 2: When the user clicks “Add to Cart” for an item, the “Cart Total” is updated, and the button to add that specific item to cart is disabled so that it can’t be added twice. (Hint: to disable a button, you can use buttonName.disable, where buttonName is the variable that can access the button element).
+    //Variable(s):
+      var totalElement=document.getElementById("total amount")
+
+      var button1=document.querySelector("#dvd1")
+      var button2=document.querySelector("#dvd2")
+      var button3=document.querySelector("#dvd3")
+
+    //Add Event Listener(s):
+      button1.addEventListener('click', addToCart)
+      button2.addEventListener('click', addToCart)
+      button3.addEventListener('click', addToCart)
+
+    //Function(s):
+      function addToCart(){
+        var thisId = this.id;
+        if (thisId== "dvd1"){
+          total = total + 20;
+        }
+        else if (thisId== "dvd2"){
+          total = total + 25;
+        }
+        else if (thisId== "dvd3"){
+          total = total + 30;
+        }
+        this.disabled=true;
+        totalElement.textContent=total;
+      }
+
+////Task 3: Finally, the user can input an amount into the input field beside “Confirm Purchase” and click the button. If the amount is less than the “Cart Total” the following alert should be shown: "Payment amount is less than cart total." Otherwise, the following alert should be shown: "Purchase Complete!"
+    //Variable(s):
+    var paymentEntry=document.getElementById("final total")
+    var sumbitButton=document.getElementById("send")
+
+    //Add Event Listener(s):
+    sumbitButton.addEventListener("click", confirmPurchase)
+
+    //Function(s):
+    function confirmPurchase(){
+      var valueOfPayment=paymentEntry.value
+      if (valueOfPayment < total) {
+        alert("Sorry. You have entered the wrong amount! Please try again!")
+      } 
+      else if (valueOfPayment > total) {
+        alert("Sorry. You have entered the wrong amount! Please try again!")
+      }
+      else {
+        alert("You have entered the right amount. Your purchase is complete!")
+      }
+    }
+////Resource Links: (https://www.w3schools.com/js/default.asp), and Lectures 7 and 8 slideshow notes.   
+     </script>
+    </body>
+</html>
